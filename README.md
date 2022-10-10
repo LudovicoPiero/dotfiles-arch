@@ -4,7 +4,7 @@ It's my personal dotfiles. Anything here is free to use, but I don't guarantee a
 
 ## Screenshot
 
-![Screenshot](Resources/Screenshot.png "Screenshot")
+![Screenshot](assets/Screenshot.png "Screenshot")
 
 ## Thanks to 
 [Archcraft-OS](https://github.com/archcraft-os/) For the scripts 💖
