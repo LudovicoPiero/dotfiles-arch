@@ -5,7 +5,7 @@
 
 ## Script to take screenshots with grim, slurp (in Wayland)
 
-iDIR="$HOME/.config/river/mako/icons"
+iDIR="$HOME/.config/hypr/mako/icons"
 
 time=`date +%Y-%m-%d-%H-%M-%S`
 #geometry=`swaymsg -pt get_outputs | grep 'Current mode:' | cut -d':' -f2 | cut -d'@' -f1 | tr -d ' '`
