@@ -1,10 +1,14 @@
 {
 	"position": "bottom",
 	"height": 30,
+  "modules-left": ["custom/launcher"],
+  // "modules-right": ["tray", "cpu", "disk"],
+  "modules-right": ["tray"],
 	"modules-center": [
 		"wlr/workspaces",
-		"tray",
+    // "custom/launcher",
 		"custom/media",
+		// "tray",
 		"network",
 		"pulseaudio",
 		"battery",
@@ -51,6 +55,11 @@
 	"tray": {
 		"icon-size": 13,
 		"spacing": 10
+	},
+  "custom/launcher": {
+		"format": " ",
+		// "exec-on-event": "true",
+    "on-click": "$HOME/.config/hypr/scripts/menu"
 	},
 	"custom/media": {
 		"format": "{icon} {}",
