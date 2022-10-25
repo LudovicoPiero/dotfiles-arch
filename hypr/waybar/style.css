@@ -3,7 +3,7 @@
     border-radius: 0;
     /* font-family: mononoki Nerd Font; */
     font-family: JetBrainsMono Nerd Font;
-    font-size: 14px;
+    font-size: 13px;
     min-height: 0;
 }
 
@@ -44,14 +44,23 @@ tooltip {
 	border-radius: 15px;
 }
 
-#custom-date, #custom-notification, #custom-media, #clock, #battery, #pulseaudio, #network, #workspaces, #tray {
+#custom-date, #custom-notification, #custom-media, #clock, #battery, #pulseaudio, #network, #workspaces {
 	background-color: #181825;
 	padding: 5px 10px;
 	margin: 5px 0px;
 }
 
+#custom-launcher {
+  padding: 5px 10px;
+  margin: 5px 0px;
+  background-color: #1E1E2E;
+  color: #1793D1;
+  border-radius: 0px 15px 15px 0px;
+}
+
 #custom-media {
 	color: #f9e2af;
+	/* border-radius: 15px 0px 0px 15px; */
 }
 
 #custom-notification {
@@ -59,8 +68,11 @@ tooltip {
 }
 
 #tray {
-  /* border-radius: 15px 0px 0px 15px; */
-  padding-left: 15px;
+  border-radius: 15px 0px 0px 15px;
+	background-color: #1e1e2e;
+  padding: 5px 10px;
+  margin: 5px 0px;
+  /* padding-left: 15px; */
 }
 
 #workspaces {
