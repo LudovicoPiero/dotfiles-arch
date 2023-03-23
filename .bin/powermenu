@@ -71,7 +71,7 @@ open_menu () {
 		$logout)
 			cdialog
 			if [[ "$?" == 0 ]]; then
-				killall wayfire
+				killall Hyprland
 			else
 				exit
 			fi
