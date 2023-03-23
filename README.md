@@ -8,5 +8,5 @@ yay -S exa bat alsa-utils ttf-iosevka-nerd ttf-ubuntu-mono-nerd waybar pipewire 
 ```
 
 # Credits
-- [lokesh-krishna](https://github.com/lokesh-krishna/dotfiles/tree/main/tokyo-night) For the waybar config!
+- [lokesh-krishna](https://github.com/lokesh-krishna/dotfiles/blob/main/LICENSE) For the waybar config!
 - [archcraft](https://archcraft.io/) For the scripts and some config!
