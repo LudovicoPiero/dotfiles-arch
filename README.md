@@ -4,7 +4,7 @@
 
 ## Install
 ```sh
-yay -S ttf-iosevka-nerd ttf-ubuntu-mono-nerd waybar pipewire pipewire-pulse wireplumber yad adwaita-icon-theme arc-gtk-theme arc-icon-theme base-devel capitaine-cursors fish firefox gvfs thunar thunar-volman grimblast-git nwg-look-bin noto-fonts noto-fonts-cjk noto-fonts-emoji neovim
+yay -S exa bat alsa-utils ttf-iosevka-nerd ttf-ubuntu-mono-nerd waybar pipewire pipewire-pulse wireplumber yad arc-gtk-theme numix-icon-theme-git base-devel capitaine-cursors fish firefox gvfs thunar thunar-volman grimblast-git nwg-look-bin noto-fonts noto-fonts-cjk noto-fonts-emoji neovim
 ```
 
 # Credits
