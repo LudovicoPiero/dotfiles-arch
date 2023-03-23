@@ -1,6 +1,8 @@
-* Dotfiles for Arch Linux
+n* Dotfiles for Arch Linux
 
-file:assets/ss.png
+#+CAPTION: 
+#+NAME:  fig:screenshot
+[[./assets/ss.png]]
 
 
 ** Install
