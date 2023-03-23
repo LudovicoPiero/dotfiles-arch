@@ -3,6 +3,19 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -12,7 +25,7 @@
    '("ef2b2346702e5cbfd7eeaa699ba58528477fe48af333e6ffdafb864a2f30a505" default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(company vertico lsp-ui lsp-mode magit flycheck auto-complete yasnippet-snippets which-key try elcord elisp-autofmt use-package)))
+   '(copilot company vertico lsp-ui lsp-mode magit flycheck yasnippet-snippets which-key try elcord use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,11 +176,6 @@
   :ensure t
   :config (yas-global-mode 1))
 
-(use-package auto-complete
-  :ensure t
-  :init (progn (ac-config-default)
-               (global-auto-complete-mode t)))
-
 (use-package flycheck
   :ensure t
   :init
@@ -199,6 +207,27 @@
 
 (use-package elcord
   :init (elcord-mode))
+
+(use-package quelpa-use-package
+  :ensure t)
+
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-c M-f" . copilot-complete)
+         :map copilot-completion-map
+         ("C-g" . 'copilot-clear-overlay)
+         ("M-p" . 'copilot-previous-completion)
+         ("M-n" . 'copilot-next-completion)
+         ("C-<tab>" . 'copilot-accept-completion)
+         ("M-f" . 'copilot-accept-completion-by-word)
+         ("M-<return>" . 'copilot-accept-completion-by-line)))
+
+(use-package vterm
+  :ensure t
+  :config
+  (setq vterm-shell "fish"))
 
 (provide 'init)
 ;;; init.el ends here
