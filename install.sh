@@ -15,3 +15,6 @@ done
 for file in .bin/*; do
     ln -sf $PWD/$file ~/.bin/
 done
+
+# And .emacs.d to ~/.emacs.d
+ln -sf $PWD/.emacs.d/init.el ~/.emacs.d/init.el
