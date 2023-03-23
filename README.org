@@ -1,4 +1,4 @@
-n* Dotfiles for Arch Linux
+* Dotfiles for Arch Linux
 
 #+CAPTION: 
 #+NAME:  fig:screenshot
