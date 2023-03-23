@@ -10,6 +10,7 @@ if status is-interactive
 
     # Path and stuff
     fish_add_path -m ~/.bin/
+    fish_add_path -m .local/bin
 
     starship init fish | source
 end
