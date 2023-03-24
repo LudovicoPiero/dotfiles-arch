@@ -18,3 +18,4 @@ done
 
 # And .emacs.d to ~/.emacs.d
 ln -sf $PWD/.emacs.d/init.el ~/.emacs.d/init.el
+ln -sf $PWD/.emacs.d/config.org ~/.emacs.d/config.org
