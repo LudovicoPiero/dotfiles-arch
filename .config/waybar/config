@@ -1,7 +1,7 @@
 {
     "position": "bottom", 
     "height": 25,
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["wlr/workspaces", "tray"],
     "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"wlr/workspaces": {
