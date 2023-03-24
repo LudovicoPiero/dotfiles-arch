@@ -1,7 +1,8 @@
 #+TITLE: My Emacs Configuration
 #+AUTHOR: Norina Madona
 #+EMAIL: ludovicopiero@pm.me
-#+OPTIONS: num:nil
+#+DATE: [2021-03-01 Tue]
+#+OPTIONS: toc:nil num:nil
 
 * General Settings
 ** Disable some GUI distractions
@@ -105,19 +106,19 @@
                     tab-mark
                     newline-mark))
 
-      (fset 'yes-or-no-p 'y-or-n-p)
-    
-      ;; Long text goes below
-      (global-visual-line-mode t)
-  
-      ;; Stop creating backup and autosave files.
-      (setq make-backup-files nil
-            auto-save-default nil)
-      ;; Default is 4k, which is too low for LSP.
-      (setq read-process-output-max (* 1024 1024))
-    
-      ;; Stop emacs blinking
-      (setq visible-bell       nil
+    (fset 'yes-or-no-p 'y-or-n-p)
+
+    ;; Long text goes below
+    (global-visual-line-mode t)
+
+    ;; Stop creating backup and autosave files.
+    (setq make-backup-files nil
+          auto-save-default nil)
+    ;; Default is 4k, which is too low for LSP.
+    (setq read-process-output-max (* 1024 1024))
+
+    ;; Stop emacs blinking
+    (setq visible-bell       nil
             ring-bell-function #'ignore)
 #+END_SRC
 
@@ -133,6 +134,21 @@
   (require 'use-package))
 (require 'bind-key)
 (setq use-package-always-ensure t)
+#+END_SRC
+** Themes
+#+BEGIN_SRC elisp
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 #+END_SRC
 ** Vertico
 #+BEGIN_SRC elisp
@@ -183,7 +199,7 @@
     ("C-c T" . vterm-other-window)
     :config
     (setq vterm-shell "fish"))
-  
+
   ;; Automatically open vterm in bottom window
   (add-to-list 'display-buffer-alist
        '("\*vterm\*"
@@ -199,3 +215,77 @@
            ("C-<" . mc/mark-previous-like-this)
            ("C-c C-<" . mc/mark-all-like-this)))
 #+END_SRC
+** Copilot
+#+BEGIN_SRC elisp
+  (use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-c M-f" . copilot-complete)
+         :map copilot-completion-map
+         ("C-g" . 'copilot-clear-overlay)
+         ("M-p" . 'copilot-previous-completion)
+         ("M-n" . 'copilot-next-completion)
+         ("C-<tab>" . 'copilot-accept-completion)
+         ("M-f" . 'copilot-accept-completion-by-word)
+         ("M-<return>" . 'copilot-accept-completion-by-line)))
+#+END_SRC
+
+* Org Mode
+** Org
+#+BEGIN_SRC elisp
+  (use-package org
+  :ensure t
+  :config
+  (setq org-directory "~/org/"
+        org-agenda-files '("~/org/agenda.org")
+        org-default-notes-file "~/org/notes.org"
+        org-log-done 'time
+        org-log-into-drawer t
+        org-log-state-notes-insert-after-drawers nil
+        org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE"))
+        org-todo-keyword-faces '(("TODO" . "red")
+                                 ("IN-PROGRESS" . "yellow")
+                                 ("WAITING" . "orange")
+                                 ("DONE" . "green"))
+        org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline "~/org/notes.org" "Tasks")
+                                 "* TODO %i%?")
+                                ("T" "Tickler" entry
+                                 (file+headline "~/org/notes.org" "Tickler")
+                                 "* %i%? \n %U"))))
+#+END_SRC
+** Org Bullets
+#+BEGIN_SRC elisp
+  (use-package org-bullets
+    :ensure t
+    :hook (org-mode . org-bullets-mode))
+#+END_SRC
+** Org Roam
+#+BEGIN_SRC elisp
+  (use-package org-roam
+    :ensure t
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    (org-roam-directory "~/org/roam")
+    :bind (:map org-roam-mode-map
+                (("C-c n l" . org-roam)
+                 ("C-c n f" . org-roam-find-file)
+                 ("C-c n g" . org-roam-graph)
+                 ("C-c n i" . org-roam-insert)
+                 ("C-c n I" . org-roam-insert-immediate)
+                 ("C-c n t" . org-roam-dailies-today)
+                 ("C-c n y" . org-roam-dailies-yesterday)
+                 ("C-c n t" . org-roam-dailies-tomorrow)
+                 ("C-c n j" . org-roam-dailies-goto-date)
+                 ("C-c n c" . org-roam-capture)
+                 ("C-c n r" . org-roam-refile)
+                 ("C-c n b" . org-roam-switch-to-buffer)
+                 ("C-c n a" . org-roam-alias-add)
+                 ("C-c n d" . org-roam-diagnostics)
+                 ("C-c n x" . org-roam-db-build-cache))))
+#+END_SRC
+
+* Programming
+** LSP
