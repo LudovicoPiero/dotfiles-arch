@@ -29,6 +29,7 @@ if status is-interactive
     alias gpsh='git push -u origin'
 
     # Path and stuff
-    fish_add_path -m ~/.bin/
-    fish_add_path -m ~/.local/bin/
+    export PATH="$HOME/.bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.cargo/bin:$PATH"
 end

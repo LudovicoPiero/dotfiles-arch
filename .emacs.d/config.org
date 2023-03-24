@@ -168,12 +168,6 @@
     (use-package all-the-icons-dired
       :ensure t
       :hook (dired-mode . all-the-icons-dired-mode))
-
-    ;;(use-package dired-x
-    ;;  :ensure t
-    ;;  :bind ("." . dired-omit-mode)
-    ;;  :config (setq dired-omit-verbose nil
-    ;;            dired-omit-files (concat dired-omit-files "\\|^\\..+$")))
 #+END_SRC
 ** Yasnippet
 #+BEGIN_SRC elisp
