@@ -154,6 +154,14 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 #+END_SRC
+** Elcord
+#+BEGIN_SRC elisp
+  (use-package elcord
+    :ensure t
+    :config
+    (setq elcord-use-major-mode-as-main-icon t)
+    (elcord-mode))
+#+END_SRC
 ** Dired
 #+BEGIN_SRC elisp
     (use-package dired
@@ -253,6 +261,14 @@
          (window-height . 0.25)
          (side . bottom)
          (slot . 0)))
+#+END_SRC
+** Projectile
+#+BEGIN_SRC elisp
+  (use-package projectile
+    :ensure t
+    :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 #+END_SRC
 ** Multiple Cursors
 #+BEGIN_SRC elisp
