@@ -15,20 +15,29 @@ set $menu fuzzel
 xwayland enable
 
 # Output configuration
-output * bg $HOME/Pictures/Wallpapers/main.png fill
+output eDP-1 {
+  bg $HOME/Pictures/Wallpapers/main.png fill
+  adaptive_sync on
+}
 
 # Font
 font pango: Iosevka Nerd Font 10
 
+# Seat
+#seat * {
+#  hide_cursor when-typing enable
+#  xcursor_theme capitaine-cursors-light
+#}
+
 # Input configuration
-input type:touchpad {
-  accel_profile adaptive
-  drag enabled
-  dwt enabled
-  events enabled
-  natural_scroll enabled
-  tap enabled
-}
+#input 1739:52545:SYNA7DB5:01_06CB:CD41_Touchpad {
+#  accel_profile adaptive
+#  drag enabled
+#  dwt enabled
+#  events enabled
+#  natural_scroll enabled
+#  tap enabled
+#}
 
 input type:keyboard {
   repeat_delay 300
@@ -82,6 +91,28 @@ for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] kill
 
     # Kill focused window
     bindsym $mod+w kill
+
+    # Audio
+    bindsym XF86AudioNext        exec  playerctl next
+    bindsym XF86AudioPrev        exec  playerctl previous
+    bindsym XF86AudioPlay        exec  playerctl play-pause
+    bindsym XF86AudioPause       exec  playerctl pause
+    bindsym XF86AudioStop        exec  playerctl stop
+    bindsym XF86AudioMute        exec  pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioRaiseVolume exec  pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec  pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+    # Brightness
+    bindsym XF86MonBrightnessUp   exec  light -A 10
+    bindsym XF86MonBrightnessDown exec  light -U 10
+
+    # Screenshot
+    bindsym CTRL+Print exec grimblast --notify copy area
+    bindsym $mod+Print exec grimblast --notify --cursor copysave output ~/Pictures/Screenshots/$(date +'%s.png')
+
+
+    # Powermenu
+    bindsym $mod+x exec $HOME/.bin/powermenu
 
     # Start your launcher
     bindsym $mod+p exec $menu
