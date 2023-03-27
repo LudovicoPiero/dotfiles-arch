@@ -18,6 +18,7 @@ xwayland enable
 output eDP-1 {
   bg $HOME/Pictures/Wallpapers/main.png fill
   adaptive_sync on
+  max_render_time 5
 }
 
 # Font
