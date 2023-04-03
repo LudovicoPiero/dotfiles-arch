@@ -44,7 +44,7 @@
 		"on-click": "$HOME/.bin/powermenu"
 	},
 	"clock": {
-		"format": "󰅐 {:%H:%M}",
+		"format": "󰅐 {:%H:%M %p}",
         	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         	"format-alt": "{:%Y-%m-%d}"
 	},
