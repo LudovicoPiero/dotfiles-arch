@@ -16,7 +16,7 @@ xwayland enable
 
 # Output configuration
 output eDP-1 {
-  bg $HOME/Pictures/Wallpapers/main.png fill
+  #bg $HOME/Pictures/Wallpapers/main.png fill
   adaptive_sync on
   max_render_time 5
 }
@@ -51,15 +51,15 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec systemctl --user restart xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 exec --no-startup-id mako
-exec --no-startup-id waybar -c $HOME/.config/waybar/config-sway -s $HOME/.config/waybar/style-sway.css
+exec --no-startup-id waybar -c $HOME/.config/waybar/config-sway.jsonc -s $HOME/.config/waybar/style-sway.css
 
 # Colors
 default_border pixel 2
 titlebar_border_thickness 1
 title_align center
 titlebar_padding 2
-gaps inner 3
-gaps outer 3
+gaps inner 0
+gaps outer 0
 
 include catppuccin-mocha
 # target                 title     bg     text    indicator  border
@@ -72,10 +72,11 @@ client.background        $base
 
 # Apps Rules
 assign [app_id="firefox"] 2
+assign [app_id="chromium"] 2
 assign [app_id="brave-browser"] 2
 assign [class="discord"] 3
 assign [class="^Steam$"] 4
-assign [class="^Spotif(y|y-free)$"] 5
+assign [class="^Spotify$"] 5
 
 for_window [urgent="latest"] focus
 for_window [window_role="pop-up"] floating enable
