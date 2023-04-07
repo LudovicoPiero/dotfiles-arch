@@ -31,14 +31,14 @@ font pango: Iosevka Nerd Font 10
 #}
 
 # Input configuration
-#input 1739:52545:SYNA7DB5:01_06CB:CD41_Touchpad {
-#  accel_profile adaptive
-#  drag enabled
-#  dwt enabled
-#  events enabled
-#  natural_scroll enabled
-#  tap enabled
-#}
+input 1739:52545:SYNA7DB5:01_06CB:CD41_Touchpad {
+ accel_profile adaptive
+ drag enabled
+ dwt enabled
+ events enabled
+ natural_scroll enabled
+ tap enabled
+}
 
 input type:keyboard {
   repeat_delay 300
@@ -50,6 +50,7 @@ input type:keyboard {
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec systemctl --user restart xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id mako
 exec --no-startup-id waybar -c $HOME/.config/waybar/config-sway.jsonc -s $HOME/.config/waybar/style-sway.css
 
@@ -90,6 +91,12 @@ for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] kill
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # Custom apps
+    bindsym $mod+d exec discord-canary --ignore-gpu-blocklist --disable-features=UseOzonePlatform \
+                        --enable-features=VaapiVideoDecoder --use-gl=desktop \
+                        --enable-gpu-rasterization --enable-zero-copy
+    bindsym $mod+o exec spotify
 
     # Kill focused window
     bindsym $mod+w kill
