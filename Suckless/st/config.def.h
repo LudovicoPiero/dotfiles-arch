@@ -29,7 +29,7 @@ static const int pseudotransparency = 0;
  *             0 = no border, 100 = border width is same as cell width */
 int borderperc = 20;
 #else
-static int borderpx = 2;
+static int borderpx = 1;
 #endif // RELATIVEBORDER_PATCH
 
 #if OPENURLONCLICK_PATCH
@@ -107,7 +107,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 2;
+static unsigned int cursorthickness = 3;
 
 #if BOXDRAW_PATCH
 /*
