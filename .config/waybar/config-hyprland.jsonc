@@ -1,7 +1,7 @@
 {
   "position": "bottom",
   "height": 25,
-  "modules-left": ["wlr/workspaces", "tray"],
+  "modules-left": ["hyprland/workspaces", "tray"],
   "modules-right": [
     "network",
     "pulseaudio",
@@ -11,22 +11,25 @@
     "custom/power"
   ],
   // Modules configuration
-  "wlr/workspaces": {
-    "disable-scroll": true,
-    "on-click": "activate",
-    "all-outputs": true,
-    "format": "{icon}",
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": [],
-      "8": [],
-      "9": [],
-      "10": []
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "10": "10",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "default": "󰝥",
+        "special": "󰦥"
+      },
+      "on-scroll-down": "hyprctl dispatch workspace r+1",
+      "on-scroll-up": "hyprctl dispatch workspace r-1",
+      "show-special": true
     },
     "format-icons": {
       "1": "1",

@@ -7,36 +7,40 @@
 }
 
 window#waybar {
-  background: transparent;
-  color: white;
+  background-color: #1e1e2e;
+  /* color: #cdd6f4; */
 }
 
 #workspaces {
-  background-color: #24283b;
-  margin: 5px;
-  margin-left: 10px;
-  border-radius: 5px;
+  background-color: #94e2d5;
+  margin: 2px;
+  margin-left: 2px;
+  border-radius: 0px;
 }
+
 #workspaces button {
-  padding: 5px 10px;
-  color: #c0caf5;
+  padding: 0px 5px;
+  background-color: #1e1e2e;
+  border-radius: 0px;
+}
+
+#workspaces button.empty {
+  color: #94e2d5;
+  background-color: #1e1e2e;
+}
+
+#workspaces button.visible {
+  color: #a6e3a1;
 }
 
 #workspaces button.active {
-  color: #24283b;
-  background-color: #7aa2f7;
-  border-radius: 5px;
+  color: #1e1e2e;
+  background-color: #fab387;
 }
 
 #workspaces button:hover {
-  background-color: #7dcfff;
-  color: #24283b;
-  border-radius: 5px;
-}
-
-#tray {
-  color: #24283b;
-  border-radius: 5px;
+  color: #1e1e2e;
+  background-color: #f9e2af;
 }
 
 #tray,
